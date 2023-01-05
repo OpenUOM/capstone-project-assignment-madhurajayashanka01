@@ -57,7 +57,6 @@ const addTeacher = async (id, name, age) => {
       .raw(sql, [id, name, age])
       .then(() => {
         resolve({ status: "Successfully inserted Teacher" });
-        resolve(data);
       })
       .catch((error) => {
         reject(error);
@@ -72,7 +71,6 @@ const updateTeacher = async (name, age, id) => {
       .raw(sql, [name, age, id])
       .then((data) => {
         resolve({ status: "Successfully updated Teacher" });
-        resolve(data);
       })
       .catch((error) => {
         reject(error);
@@ -87,7 +85,6 @@ const deleteTeacher = async (id) => {
       .raw(sql, [id])
       .then((data) => {
         resolve({ status: "Successfully deleted Teacher" });
-        resolve(data);
       })
       .catch((error) => {
         reject(error);
@@ -100,8 +97,8 @@ const readStudents = async () => {
   return new Promise((resolve, reject) => {
     knex_db
       .raw(sql)
-      .then((data) => {
-        resolve(data);
+      .then((students) => {
+        resolve(students);
       })
       .catch((error) => {
         reject(error);
@@ -114,8 +111,8 @@ const readStudentInfo = async (id) => {
   return new Promise((resolve, reject) => {
     knex_db
       .raw(sql, [id])
-      .then((data) => {
-        resolve(data);
+      .then((students) => {
+        resolve(students);
       })
       .catch((error) => {
         reject(error);
@@ -128,9 +125,8 @@ const addStudent = async (id, name, age, hometown) => {
   return new Promise((resolve, reject) => {
     knex_db
       .raw(sql)
-      .then((data) => {
+      .then(() => {
         resolve({ status: "Successfully inserted Student" });
-        resolve(data);
       })
       .catch((error) => {
         reject(error);
@@ -158,9 +154,8 @@ const deleteStudent = async (id) => {
   return new Promise((resolve, reject) => {
     knex_db
       .raw(sql, [id])
-      .then((data) => {
+      .then(() => {
         resolve({ status: "Successfully deleted Student" });
-        resolve(data);
       })
       .catch((error) => {
         reject(error);
